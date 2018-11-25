@@ -1,12 +1,22 @@
 public class File extends Node {
     private String value;
     private Node parent;
+    private Check checkTemp;
+
+    public File(String name) {
+//        Node node = new Node();
+//        node.setNodeName(name);
+        checkTemp = new Check(this, name);
+        checkTemp.setName();
+
+    }
 
     public String getValue() {
         return value;
     }
 
     public void setValue(String value) {
+
         this.value = value;
     }
 

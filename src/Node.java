@@ -5,7 +5,12 @@ public class Node {
         return name;
     }
 
-    public void setName(String name) {
+    public void setNodeName(String name) {
         this.name = name;
     }
+
+    public Node getNode(){
+        return this;
+    }
+
 }

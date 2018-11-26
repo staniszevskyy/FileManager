@@ -9,8 +9,9 @@ public class FolderDecorator extends Directory {
 
     public FolderDecorator(Directory find, String name){
         setNodeName(find.getName());
-        setSubdirectories(find.findAllDirs());
-        setFiles(find.findAllFiles());
+
+        subdirectories=find.subdirectories;
+        files=find.files;
         setParent(find.getParent());
         checkTemp = new Check(find, name);
         tempName = name;
@@ -39,40 +40,38 @@ public class FolderDecorator extends Directory {
         }
     }
 
-    public Boolean checkDuplication(ArrayList<Node> tempList){
+    public Boolean checkDirDuplication(){
         if (checkTemp.checkName()) {
-            for (Node node : tempList){
-                if (node.getName().equals(tempName)) return false;
+            for (Directory dir : subdirectories){
+                if (dir.getName().equals(tempName)) return false;
             }
             return true;
         }
         return false;
     }
 
-    public Boolean checkDirDuplication(){
-        ArrayList<Node> tempList = findAllDirs();
-        return checkDuplication(tempList);
-
-    }
-
     public Boolean checkFileDuplication(){
-        ArrayList<Node> tempList = findAllFiles();
-        return checkDuplication(tempList);
+        if (checkTemp.checkName()) {
+            for (File file : files){
+                if (file.getName().equals(tempName)) return false;
+            }
+            return true;
+        }
+        return false;
     }
 
 
 
     public void printContent(){
-        ArrayList<Directory> dirList = findAllDirs();
-        ArrayList<File> fileList = findAllFiles();
+
         System.out.print("\""+getName() +"\" dir contains: " );
 
-        for (Directory d : dirList){
+        for (Directory d : subdirectories){
             System.out.print(d.getName() + "   ");
         }
 
 
-        for (File file : fileList){
+        for (File file : files){
             System.out.print(file.getName() + "   ");
         }
         }

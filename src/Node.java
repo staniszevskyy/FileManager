@@ -9,8 +9,6 @@ public class Node {
         this.name = name;
     }
 
-    public Node getNode(){
-        return this;
-    }
+
 
 }

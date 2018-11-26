@@ -3,8 +3,8 @@ import java.util.ArrayList;
 
 public class Directory extends Node {
     private Directory parent;
-    private ArrayList<Directory> subdirectories;
-    private ArrayList<File> files;
+    protected ArrayList<Directory> subdirectories;
+    protected ArrayList<File> files;
 
     public Directory() {
         this.parent = null;
@@ -23,7 +23,7 @@ public class Directory extends Node {
         }
     public File findFile(String name){
         for (File file : files){
-            if (file.equals(name)) return file;
+            if (file.getName().equals(name)) return file;
         }
         return null;
     }
@@ -44,11 +44,5 @@ public class Directory extends Node {
         this.parent = parent;
     }
 
-    public void setSubdirectories(ArrayList<Directory> subdirectories) {
-        this.subdirectories = subdirectories;
-    }
-
-    public void setFiles(ArrayList<File> files) {
-        this.files = files;
-    }
+  
 }

@@ -33,7 +33,7 @@ public class Main {
                 case "create_folder":
                     {
                     String name = in.next();
-//                    FolderDecorator newFolder = new FolderDecorator(name);
+
                     FolderDecorator newFolder = new FolderDecorator(current, name);
                     newFolder.addNode(current);
                     break;

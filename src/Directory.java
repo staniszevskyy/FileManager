@@ -13,14 +13,17 @@ public class Directory extends Node {
     }
 
     public Directory findDir(String name){
-        for (int i = 0 ; i < subdirectories.size(); i++){
-            if (subdirectories.get(i).getName().equals(name)) return subdirectories.get(i);
+
+
+        for (Directory dir : subdirectories){
+            if (dir.getName().equals(name)) return dir;
         }
+
         return null;
         }
     public File findFile(String name){
-        for (int i = 0 ; i < files.size(); i++){
-            if (files.get(i).getName().equals(name)) return files.get(i);
+        for (File file : files){
+            if (file.equals(name)) return file;
         }
         return null;
     }

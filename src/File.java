@@ -4,8 +4,7 @@ public class File extends Node {
     private Check checkTemp;
 
     public File(String name) {
-//        Node node = new Node();
-//        node.setNodeName(name);
+
         checkTemp = new Check(this, name);
         checkTemp.setName();
 

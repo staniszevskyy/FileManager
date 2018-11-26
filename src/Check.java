@@ -22,7 +22,5 @@ public class Check extends Node {
         }
     }
 
-//    public String getName(){
-//        return created.getName();
-//    }
+
 }

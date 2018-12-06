@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static void printCommands(){
+
+
+    private void printCommands(){
         System.out.println("help --- print this again");
         System.out.println("create_folder <foldername> --- create folder in current directory");
         System.out.println("rename_folder --- rename current directory name");
@@ -13,27 +15,28 @@ public class Main {
         System.out.println("up --- go up in folder structure");
         System.out.println("sub <name> --- go to subdirectory");
         System.out.println("print --- print out current directory content");
+        System.out.println("close --- close program");
     }
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        printCommands();
+        Main main = new Main();
+        main.printCommands();
         String cmd = in.next();
         Directory root = new Directory();
         root.setNodeName("root");
         Directory current = root;
 
-        while (!cmd.equals("exit")){
+        while (!cmd.equals("close")){
 
             switch (cmd){
                 case "help": {
-                    printCommands();
+                    main.printCommands();
                     break;
                 }
                 case "create_folder":
                     {
                     String name = in.next();
-
                     FolderDecorator newFolder = new FolderDecorator(current, name);
                     newFolder.addNode(current);
                     break;

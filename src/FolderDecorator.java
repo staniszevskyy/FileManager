@@ -1,17 +1,14 @@
-import java.util.ArrayList;
-
 public class FolderDecorator extends Directory {
 
     private String tempName;
     private Check checkTemp;
 
 
-
-    public FolderDecorator(Directory find, String name){
+    public FolderDecorator(Directory find, String name) {
         setNodeName(find.getName());
 
-        subdirectories=find.subdirectories;
-        files=find.files;
+        subdirectories = find.subdirectories;
+        files = find.files;
         setParent(find.getParent());
         checkTemp = new Check(find, name);
         tempName = name;
@@ -19,30 +16,30 @@ public class FolderDecorator extends Directory {
     }
 
 
-
     @Override
     public void addNode(Directory cur) {
-        if (checkDirDuplication()){
+        if (checkDirDuplication()) {
 
             Directory newDir = new Directory();
             newDir.setNodeName(tempName);
             newDir.setParent(cur);
 
-          cur.findAllDirs().add(newDir);
+//          cur.findAllDirs().add(newDir);
+            cur.subdirectories.add(newDir);
 
         }
 
     }
 
-    public void setNode(String name){
-        if (checkDirDuplication()){
+    public void setNode(String name) {
+        if (checkDirDuplication()) {
             checkTemp.setName();
         }
     }
 
-    public Boolean checkDirDuplication(){
+    public Boolean checkDirDuplication() {
         if (checkTemp.checkName()) {
-            for (Directory dir : subdirectories){
+            for (Directory dir : subdirectories) {
                 if (dir.getName().equals(tempName)) return false;
             }
             return true;
@@ -50,9 +47,9 @@ public class FolderDecorator extends Directory {
         return false;
     }
 
-    public Boolean checkFileDuplication(){
+    public Boolean checkFileDuplication() {
         if (checkTemp.checkName()) {
-            for (File file : files){
+            for (File file : files) {
                 if (file.getName().equals(tempName)) return false;
             }
             return true;
@@ -61,20 +58,24 @@ public class FolderDecorator extends Directory {
     }
 
 
+    public void printContent() {
 
-    public void printContent(){
 
-        System.out.print("\""+getName() +"\" dir contains: " );
+        System.out.print("\"" + getName() + "\" dir contains: ");
 
-        for (Directory d : subdirectories){
+        for (Directory d : subdirectories) {
             System.out.print(d.getName() + "   ");
         }
 
 
-        for (File file : files){
+        for (File file : files) {
             System.out.print(file.getName() + "   ");
         }
-        }
+
+        System.out.println();
+    }
+
+
 }
 
 
